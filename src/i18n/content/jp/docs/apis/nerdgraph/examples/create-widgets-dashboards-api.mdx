@@ -10,10 +10,6 @@ translationType: machine
 
 New Relic dashboards API を使用すると、 [NerdGraph](https://api.newrelic.com/graphiql) を使用して、 [ダッシュボード](/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards) を構築することができます。このドキュメントでは、ダッシュボードに追加できるさまざまな種類のウィジェットと、API を使用してそれらを作成および取得する方法について説明します。
 
-<Callout variant="tip">
-  廃止されたInsights Dashboard APIを使用している場合は、新しいAPIの使用に移行するための [移行ガイド](/docs/new-relic-one/use-new-relic-one/core-concepts/dashboards-api-migration-insights-api-nerdgraph/) を用意しています。
-</Callout>
-
 ## ウィジェットスキーマとタイプ [#widget-schema]
 
 クエリとミューテーションの出力のためのウィジェットGraphQLスキーマは次のようになります。
@@ -74,7 +70,7 @@ dashboards API は、型付きおよび型なしのウィジェットをサポ�
 
     * `rawConfiguration` を提供する必要があります。以下の [の例を参照してください](#untyped-widget-data) 。
 
-    * `visualizatio`nはnullではなく、 `viz.heatmap` や `viz.bullet` のような固定文字列でなければなりません。
+    * `visualization`をnullにすることはできず、 `viz.heatmap`や`viz.bullet`などの固定文字列にする必要があります。
 
       出力として、APIは入力で提供されたものと正確に答えます。
   </Collapser>

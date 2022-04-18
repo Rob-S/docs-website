@@ -5,6 +5,7 @@ tags:
   - Synthetics REST API
   - Monitor examples
 metaDescription: 'Use the New Relic Synthetics REST API to create, delete, and manage monitors.'
+translationType: human
 ---
 
 Synthetics REST APIを使用して、ping、シンプルブラウザ、スクリプト化ブラウザ、APIテストモニターなど、すべてのタイプの[Syntheticモニター](/docs/synthetics/new-relic-synthetics/using-monitors/add-edit-monitors#types-monitors)を作成および管理します。REST APIを介して、すべてのSyntheticsモニタリングデータを入手できます。
@@ -440,7 +441,7 @@ https://synthetics.eu.newrelic.com/synthetics/api
 
     リクエストに成功すると、空白の本文と一緒に`204 No Content`のレスポンスが返されます。可能なエラーコード：
 
-    * `400 Bad Request：``scriptText`または`hmac`用の、無効のBASE64でエンコードされた文字列です。
+    * ```400 Bad Request：``scriptText```または`hmac`用の、無効のBASE64でエンコードされた文字列です。
     * `403 Forbidden：`指定されたモニターは、`SCRIPT_BROWSER`または`SCRIPT_API`タイプのものではありません。
     * `404 Not Found：`指定されたモニターが存在しません。
   </Collapser>

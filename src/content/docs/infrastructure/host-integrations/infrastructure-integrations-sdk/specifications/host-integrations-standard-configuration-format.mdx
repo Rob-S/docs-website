@@ -3,7 +3,7 @@ title: 'On-host integrations: Standard configuration format '
 tags:
   - Create integrations
   - Infrastructure Integrations SDK
-  - Specifications
+  - Specifications 
 redirects:
   - /docs/create-integrations/infrastructure-integrations-sdk/specifications/host-integrations-standard-configuration-format
   - /docs/integrations/host-integrations/configuration/host-integrations-newer-configuration-format
@@ -245,11 +245,11 @@ integrations:
         * `C:\Program Files\New Relic\newrelic-infra\newrelic-integrations\bin`
         * `C:\Program Files\New Relic\newrelic-infra\newrelic-integrations`
 
-    If there is no executable with this name in the above folders the agent logs an error and the integration is not executed.
+      If there is no executable with this name in the above folders the agent logs an error and the integration is not executed.
 
-    <Callout variant="important">
-      In Windows, do not append the `.exe` extension to the name. The agent does this for you (for example, `name: nri-mysql` would look for `nri-mysql.exe` in the above folders).
-    </Callout>
+      <Callout variant="important">
+        In Windows, do not append the `.exe` extension to the name. The agent does this for you (for example, `name: nri-mysql` would look for `nri-mysql.exe` in the above folders).
+      </Callout>
   </Collapser>
 
   <Collapser
@@ -311,14 +311,14 @@ integrations:
     * `file_exists`: Given file path exists.
     * `feature`: Provided feature-flag is enabled.
 
-    Example:
+      Example:
 
-    ```
-    integrations:
-      - name: ssh-integration
-        when:
-          file_exists: /var/run/sshd.pid
-    ```
+      ```
+      integrations:
+        - name: ssh-integration
+          when:
+            file_exists: /var/run/sshd.pid
+      ```
   </Collapser>
 </CollapserGroup>
 
@@ -353,7 +353,7 @@ integrations:
 
     <Callout variant="important">
       New Relic recommends passing `env` keys in capital letters, as per the example below, for compatibility with all infrastructure agent versions since 1.8.0.<br/>
-      If you are using agent version 1.20.0 or above you can use small caps as the agent will automatically [uppercase them](/docs/release-notes/infrastructure-release-notes/infrastructure-agent-release-notes/new-relic-infrastructure-agent-1200#changed).
+      If you are using agent version 1.20.0 or above you can use lower case letters as the agent will automatically [uppercase them](/docs/release-notes/infrastructure-release-notes/infrastructure-agent-release-notes/new-relic-infrastructure-agent-1200#changed).
     </Callout>
 
     Example:
@@ -553,21 +553,21 @@ integrations:
     1. The agent applies [secrets management](/docs/integrations/host-integrations/installation/secrets-management) and [discovery](/docs/integrations/host-integrations/installation/container-auto-discovery) to the file contents.
     2. The agent creates different temporary files that are passed to the integration via the `${config.path}` placeholder (or the `CONFIG_PATH` environment variable).
 
-    Example:
+       Example:
 
-    ```
-    discovery:
-        docker:
-          match:
-            name: /^redis/
-      integrations:
-        - name: nri-flex
-          env:
-            CONFIG_FILE: ${config.path}
-          config_template_path: /etc/flex-configs/redis.yml
-    ```
+       ```
+       discovery:
+           docker:
+             match:
+               name: /^redis/
+         integrations:
+           - name: nri-flex
+             env:
+               CONFIG_FILE: ${config.path}
+             config_template_path: /etc/flex-configs/redis.yml
+       ```
 
-    In the above example, the `redis.yml` external file can contain container discovery variable placeholders, like `${discovery.ip}` or `${discovery.port}`.
+       In the above example, the `redis.yml` external file can contain container discovery variable placeholders, like `${discovery.ip}` or `${discovery.port}`.
   </Collapser>
 </CollapserGroup>
 
@@ -772,8 +772,8 @@ Examples:
      -c /etc/newrelic-infra/integrations.d/redis-config.yml \
      -o /etc/newrelic-infra/integrations.d/redis.yml
     ```
-
   </Collapser>
+
   <Collapser
     id="mssql_conversion"
     title="Microsoft SQL"
@@ -823,5 +823,5 @@ integrations:
 ```
 
 <Callout variant="important">
-Please note that the older configuration format doesn't support hot reloading. Therefore, you need to restart the Infrastructure agent to remove the old integrations configuration. Otherwise, the old instances will coexist with the new ones.
+  Please note that the older configuration format doesn't support hot reloading. Therefore, you need to restart the Infrastructure agent to remove the old integrations configuration. Otherwise, the old instances will coexist with the new ones.
 </Callout>

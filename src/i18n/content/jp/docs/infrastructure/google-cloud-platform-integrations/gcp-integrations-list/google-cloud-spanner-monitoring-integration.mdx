@@ -28,7 +28,7 @@ New Relic の統合は、統合に応じて異なるポーリング間隔に従�
 
 ## メトリックデータ [#metrics]
 
-New Relic で GCP Spanner 統合の [メトリックデータ](/docs/integrations/new-relic-integrations/getting-started/#metric) を見るには、 [](/docs/integrations/new-relic-integrations/getting-started/use-integration-data-new-relic-insights#nrql)`GcpSpannerInstanceSample` と `GcpSpannerDatabaseSample` [イベント](/docs/insights/use-insights-ui/getting-started/introduction-new-relic-insights#event-type) とその関連属性に対する NRQL クエリを作成します。
+NewRelicでのGCPSpanner統合の[メトリックデータ](/docs/integrations/new-relic-integrations/getting-started/#metric)を表示するには、`GcpSpannerInstanceSample`および`GcpSpannerDatabaseSample`の[イベント](/docs/data-apis/understand-data/new-relic-data-types/#event-data)とそれらに関連する属性の[NRQLクエリを作成](/docs/integrations/new-relic-integrations/getting-started/use-integration-data-new-relic-insights#nrql)します。
 
 ### GcpSpannerInstanceSample [#gcp-spanner-instance-sample]
 
@@ -174,7 +174,14 @@ Query `GcpSpannerDatabaseSample` イベントをNew Relicで行うと、以下�
   </table>
 </dd>
 
-## インベントリデータ
+## インベントリデータ [#inventory]
+
+<Callout
+  variant="important"
+  title="有効期限（EOL）の通知"
+>
+  2022年3月以降は、クラウド統合用のインベントリデータなど、いくつかの機能のサポートを終了します。この移行に向けて簡単に準備できる方法など、詳細については、 [Explorers Hubの投稿](https://discuss.newrelic.com/t/important-upcoming-changes-to-capabilities-and-support-across-errors-classic-labels-service-infrastructure-on-host-snmp-integration-and-inventory-data-in-cloud-integrations/175370) をご覧ください。
+</Callout>
 
 GCP スパナサービスの [在庫データ](/docs/integrations/new-relic-integrations/getting-started/understand-use-data-infrastructure-integrations#overview) を見るには、 [**one.newrelic.com**](https://one.newrelic.com) **> インフラストラクチャー> 在庫** を検索または選択してください。
 

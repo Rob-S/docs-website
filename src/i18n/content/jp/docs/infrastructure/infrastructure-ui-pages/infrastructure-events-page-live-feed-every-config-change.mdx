@@ -8,7 +8,13 @@ metaDescription: The Events page gives you a unified timeline of important chang
 translationType: machine
 ---
 
-**Events** ページは、インベントリ変更イベント、構成変更、ログ分析イベントなど、重要なシステムおよびホストのアクティビティのライブフィードです。イベントフィードは、これらのイベントとシステムパフォーマンスの相関関係を理解するのに役立ちます。イベントを検索してフィルタリングすることで、インフラの問題を検出して修復するまでの平均時間を短縮することができます。
+import infraEventsUi from 'images/infra-events-ui.png'
+
+New Relic のインフラストラクチャ監視では、 **Events** UI ページは、インベントリ変更イベント、構成変更、ログ分析イベントなど、重要なシステムおよびホストのアクティビティのライブフィードです。イベントフィードは、これらのイベントとシステムパフォーマンスの相関関係を理解するのに役立ちます。イベントを検索してフィルタリングすることで、インフラの問題を検出して修復するまでの平均時間を短縮できます。
+
+<Callout variant="tip">
+  なお、この"イベント" の使用は、インフラストラクチャの監視に特化したものであり、より一般的な [イベントデータタイプ](/docs/data-apis/understand-data/new-relic-data-types/#event-data) とは別の概念であることに注意してください。
+</Callout>
 
 **イベント** ページにアクセスするには、 **[one.newrelic.com](http://one.newrelic.com) > インフラストラクチャー> イベント**.
 
@@ -74,7 +80,11 @@ New Relic はさまざまな変更イベントを収集するため、お客様�
 
 イベントのライブ配信を見るには **[one.newrelic.com](http://one.newrelic.com) > インフラストラクチャー> イベント** にアクセスしてください。 **Events** ページには、 [ヒートマップ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/events-heatmap-examine-patterns-time-range) があり、選択した時間範囲内に発生したイベントのスナップショットが表示されます。
 
-![Infra-Events-ui.png](./images/infra-events-ui.png "Infra-Events-ui.png")
+<img
+  title="infra-events-ui.png"
+  alt="infra-events-ui.png"
+  src={infraEventsUi}
+/>
 
 <figcaption>
   **[one.newrelic.com](http://one.newrelic.com) > インフラストラクチャー>** **イベント**: **イベント** を使用して、インフラストラクチャーの重要な活動をリアルタイムで見ることができます。
@@ -160,4 +170,4 @@ New Relic はさまざまな変更イベントを収集するため、お客様�
 
 ## チャートデータの属性 [#attributes]
 
-[属性](/docs/accounts-partnerships/education/getting-started-new-relic/glossary#attribute) の技術的な説明については、 **Events** ページを作成するために使用される、 [InfrastructureEvent attributes](/docs/infrastructure/new-relic-infrastructure/data-instrumentation/default-infrastructure-attributes-events#infrastructure-event-attributes) を参照してください。
+[属性](/docs/accounts-partnerships/education/getting-started-new-relic/glossary#attribute) **Events** ページを生成するために使用される属性の説明については、 [InfrastructureEvent attributes](https://docs.newrelic.com/attribute-dictionary/?event=InfrastructureEvent) を参照してください。

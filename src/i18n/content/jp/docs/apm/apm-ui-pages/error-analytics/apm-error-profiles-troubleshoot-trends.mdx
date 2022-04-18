@@ -8,6 +8,15 @@ metaDescription: New Relic's error profiles feature in the classic APM view show
 translationType: machine
 ---
 
+import apmErrorProfileTabDemo from 'images/apm-error-profile-tab-demo.png'
+
+<Callout
+  variant="important"
+  title="有効期限（EOL）の通知"
+>
+  2022年3月をもって、エラー・クラシックUIを含むいくつかの機能のサポートを終了します。この移行に向けて簡単に準備できる方法など、詳細については、 [Explorers Hubの投稿](https://discuss.newrelic.com/t/important-upcoming-changes-to-capabilities-and-support-across-errors-classic-labels-service-infrastructure-on-host-snmp-integration-and-inventory-data-in-cloud-integrations/175370) をご覧ください。
+</Callout>
+
 DevOpsの専門家がアプリのエラーの原因を追跡する必要がある場合、原因を特定するのは容易ではないかもしれません。APMのエラープロファイルは、あるイベントのセットを別のイベントと自動的に比較します。
 
 各エラープロファイルでは、イベントの異なる値の頻度における有意な差について、視覚的な詳細が示されています。各 [属性](/docs/accounts-partnerships/education/getting-started-new-relic/glossary#attribute) 、エラープロファイルには以下が含まれます。
@@ -30,7 +39,11 @@ DevOpsの専門家がアプリのエラーの原因を追跡する必要があ�
     id="criteria-example"
     title="APMのエラープロファイル機能"
   >
-    ![APMです。エラープロファイルの例](./images/apm-error-profile-tab-demo.png "APMです。エラープロファイルの例")
+    <img
+      title="APM: Error profiles example"
+      alt="APM: Error profiles example"
+      src={apmErrorProfileTabDemo}
+    />
 
     <figcaption>
       エラープロファイルを使用して、アプリのエラーイベントの頻度の傾向や大きな違いをトラブルシューティングします。

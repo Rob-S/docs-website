@@ -35,7 +35,7 @@ Log APIを使ってログデータをNew Relicアカウントに送信する。
 1. Get your [New Relic license key](/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
 2. JSON ペイロードの [制限と制限文字](#limits) を確認してください。
 3. 必須の [headers](#json-headers) と [body](#json-body) フィールドを使用して、JSON メッセージを生成します。
-4. `Api-Key` または `License-Key` が [headers](#json-headers) または [query parameters](#query-parameters) に含まれていることを確認してください。 [ログのJSONの例を参照](#log-attribute-examples).
+4. `Api-Key` または `License-Key` が [headers](#auth-headers) または [query parameters](#query-parameters) に含まれていることを確認してください。 [ログのJSONの例を参照](#log-attribute-examples).
 5. JSON メッセージを `POST` リクエストで、New Relic アカウントの適切な HTTP エンドポイントに送信します。
 
 * 米国： `https://log-api.newrelic.com/log/v1`
@@ -77,28 +77,50 @@ HTTPヘッダーを作成する際には、以下のガイドラインを参考�
         * `gzip`
       </td>
     </tr>
-
-    <tr>
-      <td>
-        `Api-Key`
-
-        必須
-      </td>
-
-      <td>
-        A New Relic [ライセンスキー](/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) 。また、 [クエリパラメータで送信することもできます](#query-parameters) 。
-
-        [Insights のインサートキー](/docs/apis/intro-apis/new-relic-api-keys/#insights-insert-key) を使用することもできますが、ライセンスキーの方が望ましいです。
-      </td>
-    </tr>
   </tbody>
 </table>
 
 Gzip 形式の JSON も受け付けます。圧縮されたJSONを送信する場合は、 `Content-Type: application/json` and `Content-Encoding: gzip` headersを含めてください。
 
-## HTTPクエリパラメータ [#query-parameters]
+## 認証 [#authentication]
 
-ライセンスキーは、クエリ文字列パラメータとして渡すこともできます。これは、カスタムHTTPリクエストヘッダーを許可していないクラウドベースのソースからログを送信する場合に便利です。
+[ライセンスキー](/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) は、Log API へのリクエストを認証するためのもので、提出したログメッセージが書き込まれる New Relic アカウントを決定します。ライセンスキーは、HTTP ヘッダーまたはクエリ文字列パラメーターとして渡す必要があります。
+
+### オプション1：HTTPヘッダーを使った認証 [#auth-header]
+
+以下のようにカスタムHTTPヘッダーを追加して、ライセンスキーを渡します。
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: "200px" }}>
+        ヘッダー
+      </th>
+
+      <th>
+        対応値
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        `Api-Key`
+      </td>
+
+      <td>
+        A New Relic [ライセンスキー](/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) 。また、 [クエリパラメータで送信することもできます](#query-parameters) 。
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### オプション 2: クエリ文字列パラメータを使用した認証 ("ヘッダレス" 認証 ) [#query-parameters]
+
+ライセンスキーは、URLのクエリストリングパラメータとして渡すこともできます。これは、カスタムHTTPリクエストヘッダーを許可していないクラウドベースのソースからログを送信する際に便利です。
+
+例： `https://LOG_API_ENDPOINT/log/v1?Api-Key=YOUR_API_KEY_HERE`
 
 <table>
   <thead>
@@ -120,9 +142,7 @@ Gzip 形式の JSON も受け付けます。圧縮されたJSONを送信する�
       </td>
 
       <td>
-        あなたの [ライセンスキー](/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) 。ヘッダーを送信する際には、必ずこのキーを使用してください。
-
-        [Insights のインサートキー](/docs/apis/intro-apis/new-relic-api-keys/#insights-insert-key) を使用することもできますが、ライセンスキーの方が望ましいです。
+        あなたの [ライセンスキー](/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key) 。また、 [HTTPヘッダーで送信することもできます](#auth-header) 。
       </td>
     </tr>
   </tbody>
@@ -193,11 +213,11 @@ JSONメッセージは、簡略化された属性セットまたは詳細な属�
           </td>
 
           <td>
-            文字列
+            (任意 -- ただし、Stringを推奨。サポートされている属性タイプのリスト [を参照してください](#supported-types))
           </td>
 
           <td>
-            任意の文字列
+            どんな
           </td>
 
           <td>
@@ -233,17 +253,15 @@ JSONメッセージは、簡略化された属性セットまたは詳細な属�
 
         <tr>
           <td>
-            `other_fields`
-
-            (空白を入れてはいけません）
+            その他の分野
           </td>
 
           <td>
-            文字列
+            (any -- サポートされる属性タイプのリスト [を参照してください](#supported-types))
           </td>
 
           <td>
-            任意の文字列
+            どんな
           </td>
 
           <td>
@@ -252,8 +270,6 @@ JSONメッセージは、簡略化された属性セットまたは詳細な属�
 
           <td>
             これらはログメッセージの属性となります。
-
-            注：ログ管理では、属性名のホワイトスペースをサポートしていません。
           </td>
         </tr>
       </tbody>
@@ -340,6 +356,96 @@ JSONメッセージは、簡略化された属性セットまたは詳細な属�
   </Collapser>
 </CollapserGroup>
 
+## 対応する属性タイプ [#supported-types]
+
+属性は、以下のいずれのタイプでもよい。
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        JSONリクエストを入力する
+      </th>
+
+      <th>
+        New Relic のデータベースに保存されているタイプ
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        `boolean`
+      </td>
+
+      <td>
+        `boolean`
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        `整数`
+      </td>
+
+      <td>
+        `整数`
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        `ロング`
+      </td>
+
+      <td>
+        `ロング`
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        `フロート`
+      </td>
+
+      <td>
+        `フロート`
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        `ダブル`
+      </td>
+
+      <td>
+        `ダブル`
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        `文字列`
+      </td>
+
+      <td>
+        `string` （なお、文字列値が文字列化されたJSONの場合は、パースされ、そのフィールドが変数として抽出されます。 [JSONメッセージの属性パース](#message-attribute-parsin) を参照ください )
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        配列
+      </td>
+
+      <td>
+        (未対応)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## 上限値および文字の制限 [#limits]
 
 <Callout variant="caution">
@@ -401,10 +507,6 @@ Log APIに送信されるログのレート制限。
 ### ログのペイロードフォーマット [#payload-format]
 
 有効なJSONペイロードであれば何でも受け付けます。ペイロードは、 **UTF-8** としてエンコードされている必要があります。
-
-<Callout variant="important">
-  ログ管理では、属性名のホワイトスペースをサポートしていません。例えば、 `{"Sample Attribute":"Value"}。` はエラーになります。
-</Callout>
 
 ## JSONメッセージ属性 [#attributes]
 
@@ -570,11 +672,11 @@ Log APIに送信されるログのレート制限。
           </td>
 
           <td>
-            文字列
+            (任意 -- ただし、Stringを推奨。サポートされている属性タイプのリスト [を参照してください](#supported-types))
           </td>
 
           <td>
-            (任意の文字列)
+            (いずれか）
           </td>
 
           <td>
@@ -659,10 +761,6 @@ Log APIに送信されるログのレート制限。
 ## JSONメッセージの属性解析 [#message-attribute-parsin]
 
 当社のログ管理機能は、 `メッセージ` 属性を JSON として解析します。解析されたメッセージの結果のJSON属性は、イベントに追加されます。 `メッセージ` 属性が JSON でない場合は、そのままになります。
-
-<Callout variant="important">
-  属性名の中のホワイトスペースはサポートされていません。例えば、 `{"Sample Attribute":"Value"}。` はエラーになります。代わりに、 `{"Sample_Attribute":"Value"} のように使用してください。`.
-</Callout>
 
 以下は、 `メッセージ` 属性の例です。
 
@@ -759,7 +857,7 @@ Log APIに送信されるログのレート制限。
 POST /log/v1 HTTP/1.1
 Host: log-api.newrelic.com
 Content-Type: application/json
-X-License-Key: <var><YOUR_LICENSE_KEY></var>
+Api-Key: <var><YOUR_LICENSE_KEY></var>
 Accept: */*
 Content-Length: 319
 [{
@@ -887,7 +985,7 @@ Content-Length: 319
 POST /log/v1 HTTP/1.1
    Host: log-api.newrelic.com
    Content-Type: application/json
-   X-License-Key: <var><YOUR_LICENSE_KEY></var>
+   Api-Key: <var><YOUR_LICENSE_KEY></var>
    Accept: */*
    Content-Length: 133
    {

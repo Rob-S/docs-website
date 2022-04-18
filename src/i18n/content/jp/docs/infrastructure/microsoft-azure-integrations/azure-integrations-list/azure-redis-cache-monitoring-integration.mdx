@@ -12,7 +12,7 @@ translationType: machine
 
 ## 機能
 
-New RelicのAzure Redis Cache用インテグレーションは、接続しているクライアント数、使用されたGETおよびSETコマンドの数、1秒あたりの書き込み/読み取りバイト数など、Azure Redis Cacheサービスに関するメトリクスをレポートします。また、サービスのステータスや構成に関するインベントリーデータも収集します。
+New RelicのAzure Redis Cache用インテグレーションは、接続されたクライアント数、使用されたGETおよびSETコマンドの数、1秒あたりの書き込み/読み取りバイト数など、Azure Redis Cacheサービスに関するメトリクスをレポートします。また、サービスのステータスや構成に関するデータも収集します。
 
 [New Relic Infrastructure UI](/docs/infrastructure) から、Azure Redis Cache のデータを監視したり、アラートを出したりすることができ、 [カスタムクエリやチャートダッシュボード](/docs/using-new-relic/data/understand-data/query-new-relic-data) を作成することができます。
 
@@ -33,7 +33,7 @@ New RelicのAzure Redis Cache用インテグレーションは、接続してい
 
 統合データを見つけるには、 [**one.newrelic.com**](http://one.newrelic.com) **> Infrastructure> Azure** にアクセスし、Azure Redis Cache 統合を選択します。
 
-[](/docs/using-new-relic/data/understand-data/query-new-relic-data)データの問い合わせや探索には、 AzureRedisCacheSample イベントタイプ と、サービスにシャードが構成されている場合には、 AzureRedisCacheShardSample イベントタイプを使用することができます。``[](/docs/insights/use-insights-ui/getting-started/introduction-new-relic-insights#event-type)``
+[データを照会して探索することができます](/docs/using-new-relic/data/understand-data/query-new-relic-data) `AzureRedisCacheSample` [イベントタイプ](/docs/data-apis/understand-data/new-relic-data-types/#event-data) と、サービスでシャードが構成されている場合、 `AzureRedisCacheShardSample` イベントタイプを使用することができます。
 
 統合データの見つけ方と使い方については、 [Understand and use data](/docs/infrastructure/integrations/find-use-infrastructure-integration-data) を参照してください。
 
@@ -286,6 +286,13 @@ Azure Redis Cache 統合によって報告されたメトリクスを表示す�
 </table>
 
 ## インベントリデータ [#inventory]
+
+<Callout
+  variant="important"
+  title="有効期限（EOL）の通知"
+>
+  2022年3月以降は、クラウド統合用のインベントリデータなど、いくつかの機能のサポートを終了します。この移行に向けて簡単に準備できる方法など、詳細については、 [Explorers Hubの投稿](https://discuss.newrelic.com/t/important-upcoming-changes-to-capabilities-and-support-across-errors-classic-labels-service-infrastructure-on-host-snmp-integration-and-inventory-data-in-cloud-integrations/175370) をご覧ください。
+</Callout>
 
 インベントリデータは、システムの状態や構成に関する情報です。この統合では、以下のデータがレポートされます。
 

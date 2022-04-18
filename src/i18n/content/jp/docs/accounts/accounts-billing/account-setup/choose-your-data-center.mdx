@@ -38,11 +38,10 @@ New Relic は、EU 地域において、米国地域とほぼ同じ製品、機�
 
 * [Infinite Tracing](/docs/understand-dependencies/distributed-tracing/infinite-tracing/introduction-infinite-tracing) は利用できません。
 * APMの [ウィークリーパフォーマンスレポート](/docs/apm/reports/other-performance-analysis/weekly-performance-report) は利用できません。
-* [Errors inbox](/docs/apm/apm-ui-pages/errors-inbox/errors-inbox/) は利用できません。
 * [ログパターン](/docs/logs/log-management/ui-data/find-unusual-logs-log-patterns/#availability)
 * 非推奨の製品や機能は利用できません。
 
-[New Relic の Incident Intelligence](/docs/new-relic-one/use-new-relic-one/new-relic-ai/get-started-incident-intelligence) サービスは米国のみで運営されています。お客様のデータを New Relic の米国地域のデータセンターまたは New Relic の EU 地域のデータセンターに保管するかどうかにかかわらず、New Relic Incident Intelligence を使用することにより、お客様は New Relic がお客様のデータを米国地域に移動して保管することに同意するものとします。
+[New Relicのインシデントインテリジェンス](/docs/new-relic-one/use-new-relic-one/new-relic-ai/get-started-incident-intelligence)サービスは、New Relicの米国地域データセンターまたはNewRelicのEU地域データセンターのどちらにデータを保存する場合でも、米国でのみ動作します。NewRelicインシデントインテリジェンスを使用することにより、NewRelicがデータを移動して保存することに同意したことになります。米国地域。
 
 [New Relic CodeStream](/docs/codestream/start-here/what-is-codestream) は米国でのみ運営されています。New Relic アカウントのセットアップ時に New Relic の米国または EU 地域のデータセンターを選択したかどうかにかかわらず、New Relic CodeStream を使用する際には、New Relic CodeStream のデータが米国で保存されることに同意するものとします。
 
@@ -62,12 +61,6 @@ New Relic は、EU 地域において、米国地域とほぼ同じ製品、機�
     title="パートナーシップアカウントの階層の例"
   >
     [パートナーシップアカウント](/docs/new-relic-partnerships/partner-integration-guide/partner-account-maintenance/partnership-accounts-users-subscriptions#partnerships) の場合、EU地域でデータをホストするためには、新しい親アカウントを作成する必要があります。この階層は、パートナーシップオーナーアカウントを持つグローバルアカウントの構造を示しています。データは親アカウント以外には集約されません。
-
-    ![親と子のアカウントは、パートナーとパートナーシップオーナーのアカウントにロールアップされます。](./images/Eu_account_hierarchy.png "Eu_account_hierarchy.png")
-
-    <figcaption>
-      **パートナーシップ組織の階層の例。** 地域を超えてデータを共有することはできないため、パートナーシップには地域ごとに親アカウントが必要になります。
-    </figcaption>
   </Collapser>
 </CollapserGroup>
 
@@ -127,42 +120,6 @@ EU地域のアカウントをお持ちの方は、適切なエンドポイント
       <td>
         ```
         infra-api.<mark>eu</mark>.newrelic.com
-        ```
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        [ダッシュボードAPI](/docs/insights/insights-api/manage-dashboards/insights-dashboard-api)
-      </td>
-
-      <td>
-        ```
-        rpm.<mark>eu</mark>.newrelic.com/api/explore/dashboards/list
-        ```
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        [APIの挿入](/docs/insights/insights-data-sources/custom-data/insert-custom-events-insights-api)
-      </td>
-
-      <td>
-        ```
-        insights-collector.<mark>eu01</mark>.nr-data.net
-        ```
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        [Insights Query API](/docs/insights/insights-api/get-data/query-insights-event-data-api)
-      </td>
-
-      <td>
-        ```
-        insights-api.<mark>eu</mark>.newrelic.com
         ```
       </td>
     </tr>
@@ -264,6 +221,30 @@ EU地域のアカウントをお持ちの方は、適切なエンドポイント
         ```
       </td>
     </tr>
+
+    <tr>
+      <td>
+        [イベントのAPI](/docs/data-apis/ingest-apis/introduction-event-api)
+      </td>
+
+      <td>
+        ```
+        insights-collector.<mark>eu01</mark>.nr-data.net
+        ```
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        [Insights Query API](/docs/insights/insights-api/get-data/query-insights-event-data-api)
+      </td>
+
+      <td>
+        ```
+        insights-api.<mark>eu</mark>.newrelic.com
+        ```
+      </td>
+    </tr>
   </tbody>
 </table>
 
@@ -287,5 +268,5 @@ New Relic の [アカウントの請求プロセスと価格オプション](/do
 
 これらのオプションのいずれかを使用して、お客様のアカウントデータがEU地域のデータセンターでホストされているかどうかを確認してください。
 
-* APMで、アプリケーション名にマウスオーバーすると、URLが表示されます。 `rpm.eu.newrelic.com/` で始まっていれば、EU圏のアカウントです。
-* [New Relic のライセンスキー](/docs/accounts/install-new-relic/account-setup/license-key) を確認してください。 `EU` で始まっていれば、EU ベースのアカウントです。
+* APMで、アプリケーション名の上にマウスを置くと、URLが表示されます。 `rpm.eu.newrelic.com/`で始まる場合は、EUベースのアカウントです。
+* [NewRelicのライセンスキーを](/docs/accounts/install-new-relic/account-setup/license-key)確認してください。 `EU`で始まる場合は、EUベースのアカウントです。

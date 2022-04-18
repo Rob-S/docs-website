@@ -8,7 +8,7 @@ metaDescription: 'New Relic''s Google Cloud Storage integration: how to activate
 translationType: machine
 ---
 
-New Relic では、Google Cloud Storage のデータを New Relic にレポートするための [統合](/docs/infrastructure/integrations-getting-started/getting-started/introduction-infrastructure-integrations) を提供しています。 [この統合をインフラストラクチャモニタリングに接続する方法](#connect) と、この統合で New Relic がレポートする [メトリックデータ](#metrics) と [インベントリデータ](#rds-config) についてご紹介します。
+New Relic では、Google Cloud Storage のデータを New Relic にレポートするための [統合](/docs/infrastructure/integrations-getting-started/getting-started/introduction-infrastructure-integrations) を提供しています。 [この統合をインフラストラクチャモニタリングに接続する方法](#connect) と、この統合で New Relic がレポートする [メトリクスデータ](#metrics) についてご紹介します。
 
 ## 機能
 
@@ -30,11 +30,11 @@ New Relic は、5 分のポーリング間隔で Google Cloud Storage サービ�
 
 インテグレーションを New Relic に接続して数分待つと、データが New Relic の UI に表示されます。 [ダッシュボードやアラート設定を含む統合データ](/docs/telemetry-data-platform/understand-data/new-relic-data-types/) を見つけて使用するには、 [**one.newrelic.com**](https://one.newrelic.com) **> インフラストラクチャ> GCP> Google Cloud Storage**.
 
-統合のためのカスタムダッシュボードを作成するには、 [`GcpStorageBucketSample` イベントタイプのクエリを、プロバイダ値 `GcpStorageBucket` で作成します。](/docs/integrations/new-relic-integrations/getting-started/use-integration-data-new-relic-insights)
+統合用のカスタムダッシュボードを作成するには、[クエリを作成します](/docs/integrations/new-relic-integrations/getting-started/use-integration-data-new-relic-insights)`GcpStorageBucketSample` イベントタイプとプロバイダー値 `GcpStorageBucket`。
 
-## [メトリックデータ [#metrics]](/docs/integrations/new-relic-integrations/getting-started/use-integration-data-new-relic-insights)
+## メトリックデータ [#metrics]
 
-[統合は、 ](/docs/integrations/new-relic-integrations/getting-started/use-integration-data-new-relic-insights)[メトリックデータ](/docs/telemetry-data-platform/understand-data/new-relic-data-types/#metrics) を `メソッド` および `レスポンス_コード` のすべての値について報告します。
+統合は、 [メトリックデータ](/docs/telemetry-data-platform/understand-data/new-relic-data-types/#metrics) を `メソッド` および `レスポンス_コード` のすべての値について報告します。
 
 * `response_code`: リクエストのレスポンスコードです。
 * `メソッド`: 呼び出されたAPIメソッドの名前。
@@ -87,7 +87,14 @@ New Relic が Google Cloud Storage 統合から受け取るメトリックデー
   </tbody>
 </table>
 
-## インベントリデータ [#rds-config]
+## インベントリデータ [#inventory]
+
+<Callout
+  variant="important"
+  title="有効期限（EOL）の通知"
+>
+  2022年3月以降は、クラウド統合用のインベントリデータなど、いくつかの機能のサポートを終了します。この移行に向けて簡単に準備できる方法など、詳細については、 [Explorers Hubの投稿](https://discuss.newrelic.com/t/important-upcoming-changes-to-capabilities-and-support-across-errors-classic-labels-service-infrastructure-on-host-snmp-integration-and-inventory-data-in-cloud-integrations/175370) をご覧ください。
+</Callout>
 
 [Google Cloud Storage のバケットオブジェクトのインベントリデータ](/docs/integrations/new-relic-integrations/getting-started/understand-use-data-infrastructure-integrations#overview) には、以下のプロパティが含まれています。
 

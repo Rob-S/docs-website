@@ -20,7 +20,7 @@ CPMをカスタマイズするには以下の方法があります。
 
 ## ボリュームのマウントに関するガイドライン
 
-すべてのディレクトリとファイル ****には、 `3729` としてグループ所有権が割り当てられ、読み取り/書き込み権限が与えられている必要があります。これにより、 `uid: 1000` と `gid: 3729` を使用するランナーが、マウントされたすべてのボリュームにアクセスできるようになります。ただし、Minionは、root（`uid: 0` ）または `uid` `[2000, 4000]` の範囲で実行することができます。詳細については、Kubernetesで [non-rootとして実行する](/docs/synthetics/new-relic-synthetics/private-locations/containerized-private-minion-cpm-configuration#kubernetes-env-config) または [Docker](/docs/synthetics/new-relic-synthetics/private-locations/containerized-private-minion-cpm-configuration#docker-env-config) を参照してください。
+すべてのディレクトリとファイルには、読み取り/書き込み権限を持つ`3729`としてグループ所有権を割り当てる**必要**があります。これにより、 `uid: 1000`および`gid: 3729`を使用するランナーが、マウントされているすべてのボリュームにアクセスできるようになります。ただし、Minionはroot（ `uid: 0` ）として、または`[2000, 4000]`の範囲の任意の`uid`で実行できます。詳細については、Kubernetesまたは[Docker](/docs/synthetics/new-relic-synthetics/private-locations/containerized-private-minion-cpm-configuration#docker-env-config) [で非ルート](/docs/synthetics/new-relic-synthetics/private-locations/containerized-private-minion-cpm-configuration#kubernetes-env-config)として実行するをご覧ください。
 
 **Docker**
 
@@ -145,7 +145,7 @@ npm モジュールの他に、 [Node.js モジュール](/docs/synthetics/new-r
 
 ## データの永久保存 [#permanent-data-volume]
 
-CPMはステートレスアプリケーションであり、デフォルトでは以前のリクエストやセッションからの情報は保存されません。ただし、永続的なデータ保存を有効にすることで、起動間のデータを保存することができます。例えば、ミニオンが自分自身を識別する方法を恒久的に設定し（例えば、 `Minion_ID` ）、それを使用して、SyntheticsやInsightsイベントで表示されるデータを、それを生成した正確なミニオンと関連付けることができます。
+CPMはステートレスアプリケーションであり、デフォルトでは以前のリクエストやセッションからの情報は保存されません。ただし、永続的なデータ保存を有効にすることで、起動間のデータを保存することができます。たとえば、ミニオンが自身を識別する方法を恒久的に設定し (たとえば、 `Minion_ID`)、それを使用して、そのデータを生成した正確なミニオンと関連付けることができます。
 
 Dockerに恒久的なデータ保存を設定するには
 

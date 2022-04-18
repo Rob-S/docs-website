@@ -8,7 +8,7 @@ metaDescription: 'New Relic''s Microsoft Azure Cosmos DB (Document DB) integrati
 translationType: machine
 ---
 
-[New Relic インフラストラクチャ モニタリング](/docs/infrastructure) は、 [Microsoft Azure の Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction) サービスとの統合を提供し、Cosmos DB のメトリクスとインベントリ データを New Relic にレポートします。このドキュメントでは、Cosmos DB インテグレーションを有効にする方法と、取得可能なデータについて説明します。
+[New Relic インフラストラクチャ モニタリング](/docs/infrastructure) は、 [Microsoft Azure の Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction) サービスの統合を提供し、Cosmos DB のメトリクスやその他のデータを New Relic にレポートします。このドキュメントでは、Cosmos DB インテグレーションを有効にする方法と、取得可能なデータについて説明します。
 
 ## 機能
 
@@ -61,7 +61,7 @@ Cosmos DBの統合では、データベースとコレクションのデータ�
 
 統合データを表示するには、 **[one.newrelic.com](https://one.newrelic.com) > Infrastructure> Azure** にアクセスし、Cosmos DB Integration を選択します。
 
-[](/docs/using-new-relic/data/understand-data/query-new-relic-data)データの照会や探索は、以下の イベントタイプ を使って行うことができます。[](/docs/insights/use-insights-ui/getting-started/introduction-new-relic-insights#event-type)
+次の[イベントタイプ](/docs/data-apis/understand-data/new-relic-data-types/#event-data)を使用して、[データのクエリと探索](/docs/using-new-relic/data/understand-data/query-new-relic-data)を行うことができます。
 
 <table>
   <thead>
@@ -1335,6 +1335,13 @@ Cosmos DBインテグレーションで報告されたメトリクスを表示�
 </table>
 
 ## インベントリデータ [#inventory]
+
+<Callout
+  variant="important"
+  title="有効期限（EOL）の通知"
+>
+  2022年3月以降は、クラウド統合用のインベントリデータなど、いくつかの機能のサポートを終了します。この移行に向けて簡単に準備できる方法など、詳細については、 [Explorers Hubの投稿](https://discuss.newrelic.com/t/important-upcoming-changes-to-capabilities-and-support-across-errors-classic-labels-service-infrastructure-on-host-snmp-integration-and-inventory-data-in-cloud-integrations/175370) をご覧ください。
+</Callout>
 
 インベントリデータは、システムの状態や構成に関する情報です。インベントリデータの見つけ方と使い方の詳細は、 [データの理解と利用](/docs/infrastructure/integrations/find-use-infrastructure-integration-data#inventory-data) をご覧ください。
 

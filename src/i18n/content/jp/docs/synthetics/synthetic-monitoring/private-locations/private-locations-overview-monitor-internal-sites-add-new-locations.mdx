@@ -5,7 +5,12 @@ tags:
   - Synthetic monitoring
   - Private locations
 metaDescription: 'For New Relic''s synthetic monitoring, use private locations to run synthetic minions on your own systems, to monitor intranets, or expand geographical coverage.'
+translationType: human
 ---
+
+import privateLocations from 'images/private-locations.png'
+
+import screenAssignToPrivateLocationSyntheticsMonitor0 from 'images/screen-assign-to-private-location-synthetics-monitor_0.png'
 
 Syntheticモニタリングでは、プライベートロケーションとは、プライベートミニオンの集合です。ミニオンはコンテナ化されたアプリケーションであり、Synthetics UI経由でセットアップされたジョブを受け取り、管理します。
 
@@ -73,10 +78,10 @@ Syntheticモニタリングでは、プライベートロケーションとは�
       </td>
 
       <td>
-        アクセスの仕組みは、お使いの[ユーザーモデル](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models)によって異なります。
+        アクセスの仕組みは、お使いの[ユーザーモデル](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-user-models)によって異なります。
 
         * 元のユーザーモデル：[子アカウント](/docs/accounts/original-accounts-billing/original-users-roles/parent-child-account-structure)を持つアカウントによってプライベートロケーションが設定されている場合、その子アカウントへのアクセス権を持つユーザーが使用できます。ただし、子アカウントで設定されている場合は、そのアカウントのユーザーのみが使用できます。
-        * New Relic Oneユーザーモデル：アカウントへのユーザーアクセスは、[そのアカウントへのアクセスが許可されているかどうか](/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#understand-concepts)によって異なります。
+        * New Relic Oneのユーザーモデル：アカウントへのユーザーアクセスは、[そのアカウントへのアクセスが許可されているかどうか](/docs/accounts/accounts-billing/new-relic-one-user-management/user-management-concepts#understand-concepts)によって異なります。
       </td>
     </tr>
   </tbody>
@@ -84,7 +89,7 @@ Syntheticモニタリングでは、プライベートロケーションとは�
 
 ## プライベートロケーションの作成 [#create-location]
 
-**![screenshot-manage-private-locations.png](./images/private-locations.png "screenshot-manage-private-locations.png")**
+**<img title="screenshot-manage-private-locations.png" alt="screenshot-manage-private-locations.png" src={privateLocations}/>**
 
 <figcaption>
   [**one.newrelic.com**](http://one.newrelic.com/) **> Synthetics > Private Locations**：**Private Locations**ページを使用して、プライベートロケーションを作成、編集、および削除します。
@@ -123,7 +128,11 @@ Syntheticモニタリングでは、プライベートロケーションとは�
 
 ロケーションのキューにジョブを追加するには、標準の手順に従って、[モニターを追加または編集](/docs/synthetics/new-relic-synthetics/using-monitors/add-edit-monitors#adding-monitors)し、**Private locations**リストからロケーションを選択します。既存のモニターを割り当てるには、その[モニターの設定](/docs/synthetics/new-relic-synthetics/using-monitors/add-edit-monitors#editing-monitors)を編集します。
 
-![screen-assign-to-private-location-synthetics-monitor.png](./images/screen-assign-to-private-location-synthetics-monitor_0.png "screen-assign-to-private-location-synthetics-monitor.png")
+<img
+  title="screen-assign-to-private-location-synthetics-monitor.png"
+  alt="screen-assign-to-private-location-synthetics-monitor.png"
+  src={screenAssignToPrivateLocationSyntheticsMonitor0}
+/>
 
 <figcaption>
   [**one.newrelic.com**](http://one.newrelic.com/) **> Synthetics > Create monitor**：プライベートロケーションとそのミニオンに新しいジョブを割り当てるには、**Create monitor**ページから名前を選択します。

@@ -8,6 +8,10 @@ metaDescription: Enabling New Relic distributed tracing impacts some APM feature
 translationType: machine
 ---
 
+import distributedTraceTxnTraceAffects from 'images/distributed-trace-txn-trace-affects.png'
+
+import rollOut from 'images/roll_out.png'
+
 New Relicディストリビューティッド（分散）トレーシング をこれまで使用したことがない場合、ディストリビューティッド（分散）トレーシングを有効にする前に次の文書を読むことを推奨します。
 
 ## APM機能への影響 [#changes]
@@ -25,21 +29,16 @@ New Relicディストリビューティッド（分散）トレーシング を�
 
 <CollapserGroup>
   <Collapser
-    id="external-details"
-    title="外部サービスページには、あまり詳細が表示されません。"
-  >
-    ディストリビューティッド（分散）トレーシングがアプリケーションで有効にされていない場合、外部コールには内部トランザクションはありません。詳細は、**[one.newrelic.com](https://one.newrelic.com) > APM >（アプリケーションを選択）> Monitor > External services >（外部サービスを選択）**で確認してください。
-
-    この情報を探すには、**ディストリビューティッド（分散）トレーシング**のUIページに移動し、外部コールのURLを見つけて、その子スパンを確認します。
-  </Collapser>
-
-  <Collapser
     id="txn-trace-changes"
     title="トランザクショントレースのUIには、トランザクションのリンクではなく、サービスのURLが表示されます。"
   >
     アプリケーションでディストリビューティッド（分散）トレーシングを有効にすると、呼び出されたサービスのトランザクション名とリンクがトランザクショントレースのUIに表示されなくなります（下記のスクリーンショットを参照）。これは、呼び出されたサービスのURLで交換されます。
 
-    ![ディストリビューティッド（分散）トレーシング - トランザクショントレースの効果](./images/distributed-trace-txn-trace-affects.png "distributed-tracing-txn-trace-details-changes.png")
+    <img
+      title="distributed-tracing-txn-trace-details-changes.png"
+      alt="Distributed tracing - Transaction trace effects"
+      src={distributedTraceTxnTraceAffects}
+    />
 
     <figcaption>
       **[one.newrelic.com](https://one.newrelic.com) > APM >（アプリケーションを選択）> Monitor > Transactions >（トランザクショントレースを選択）：**ディストリビューティッド(分散)トレーシングを有効にする前のトランザクショントレースUIと、関連付けられたトランザクションへのリンクが表示されます。ディストリビューティッド（分散）トレーシングを有効にすると、サービスのURLが表示されます。
@@ -78,7 +77,11 @@ New Relicディストリビューティッド（分散）トレーシング を�
 
   こうした段階的な展開を図示すると次のようになります：
 
-  ![ディストリビューティッド（分散）トレーシングの展開戦略を示す図](./images/roll_out.png "distributed-tracing-roll-out-strategy-image.png")
+  <img
+    title="distributed-tracing-roll-out-strategy-image.png"
+    alt="Diagram showing a roll-out strategy for distributed tracing."
+    src={rollOut}
+  />
 
 * 大規模なモノリシックサービスにAPMを使用している場合、トレースごとに多くのサブプロセススパンがあり、[APMの制限](/docs/understand-use-distributed-tracing-data#rules-limits)により、予想よりトレースが減る場合があります。この問題は、APMエージェントインストゥルメンテーションを使用して、重要でないデータのレポートを無効にすることで解決できます。
 
@@ -86,4 +89,4 @@ New Relicディストリビューティッド（分散）トレーシング を�
 
 ## ディストリビューティッド（分散）トレーシングの有効化 [#enable]
 
-APM機能への影響について認識しており、展開についての考えがある場合、ディストリビューティッド（分散）トレーシングの設定を行えます。[概要: ディストリビューティッド（分散）トレーシングを有効にする](/docs/understand-dependencies/distributed-tracing/enable-configure/overview-enable-distributed-tracing)をご覧ください。
+APM機能への影響を認識し、ロールアウトについて考えたならば、分散型トレースを設定する準備ができています。 [セットアップオプション](/docs/distributed-tracing/concepts/quick-start) をご覧ください。

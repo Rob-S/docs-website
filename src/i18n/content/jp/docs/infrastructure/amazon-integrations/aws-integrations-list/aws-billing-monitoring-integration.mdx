@@ -24,7 +24,7 @@ New RelicのAWS Billing統合は、すべてのアプリケーションとAWSア
 [AWSバジェットを有効にする前に](#configure-budget) 、必要があります。
 
 * AWS Billingのデータを収集するために、New RelicのAWS ConsoleからAWSバジェットを設定します。
-* **Receive Billing Alerts** のチェックボックスを有効にする **AWSコンソール> Billing> Billing preferences**.これは、AmazonがCloudWatchを介して使用料を報告するために必要です。実際にAmazonからアラートを受信する必要はありません。
+* **Receive Billing Alerts** チェックボックスを有効にする **AWS コンソール> Billing> Billing preferences**.これは、AmazonがCloudWatch経由で使用料を報告するために必要です。実際にAWSからアラートを受信する必要はありません。
 
 <Callout variant="important">
   Billing (Costs) ダッシュボードにアクセスするには、 **Receive Billing Alerts** のチェックボックスを有効にするだけでよい。
@@ -39,7 +39,7 @@ New RelicのAWS Billing統合は、すべてのアプリケーションとAWSア
 AWSのバジェットを有効にすると、New Relicはサービスの消費量だけでなく、AWSで設定したバジェットの使用量やコストの情報も取得できるようになります。
 
 <Callout variant="tip">
-  ****AWSにロールを作成していない場合は、バジェットポリシーを設定する前に、 [AWSとNew Relic](/docs/infrastructure/infrastructure-integrations/getting-started/connect-aws-integrations-infrastructure#connect) を接続する手順に従ってください。
+  AWSでロールを作成してい**ない**場合は、予算ポリシーを設定する前に、手順に従って[AWSをNewRelicに接続して](/docs/infrastructure/infrastructure-integrations/getting-started/connect-aws-integrations-infrastructure#connect)ください。
 </Callout>
 
 1. AWS Managementコンソールから、 **Services** > **IAM** > **Roles** を選択します。
@@ -81,7 +81,7 @@ AWSのバジェットを有効にすると、New Relicはサービスの消費�
 
 統合データの見つけ方や使い方に関する一般的な情報については、 [統合データの理解](/docs/infrastructure/integrations/find-use-infrastructure-integration-data) を参照してください。
 
-データは、 `FinanceSample` [イベントタイプ](/docs/insights/use-insights-ui/getting-started/introduction-new-relic-insights#event-type) に添付されます。そのイベントタイプは、請求データの種類に応じて、4種類の `プロバイダ` の値を持つことができます。
+データは`FinanceSample`[イベントタイプ](/docs/data-apis/understand-data/new-relic-data-types/#event-data)に添付されます。そのイベントタイプは、請求データのタイプに応じて、4つの異なる`provider`値を持つことができます。
 
 * [バジェット](#billing-budget)
 * [AWSサービス費用](#billing-service-cost)
@@ -263,6 +263,13 @@ New Relic インフラストラクチャの AWS Billing インテグレーショ
 </table>
 
 ## インベントリデータ [#inventory]
+
+<Callout
+  variant="important"
+  title="有効期限（EOL）の通知"
+>
+  2022年3月以降は、クラウド統合用のインベントリデータなど、いくつかの機能のサポートを終了します。この移行に向けて簡単に準備できる方法など、詳細については、 [Explorers Hubの投稿](https://discuss.newrelic.com/t/important-upcoming-changes-to-capabilities-and-support-across-errors-classic-labels-service-infrastructure-on-host-snmp-integration-and-inventory-data-in-cloud-integrations/175370) をご覧ください。
+</Callout>
 
 インベントリデータは、サービスの状態や構成に関する情報を提供します。インベントリデータの詳細については、 [Understand and use data](/docs/infrastructure/integrations-getting-started/getting-started/understand-integration-data-data-types#inventory-data) を参照してください。
 

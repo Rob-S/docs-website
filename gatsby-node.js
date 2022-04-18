@@ -23,6 +23,9 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         https: false,
         zlib: false,
       },
+      alias: {
+        images: path.resolve(__dirname, 'src/images/'),
+      },
     },
   });
 };
@@ -243,11 +246,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           i18nNode.fields.slug.replace(`/${locale}`, '') === node.fields.slug
       );
 
-      createPageFromNode(i18nNode || node, {
-        prefix: i18nNode ? '' : locale,
-        createPage,
-        disableSwiftype: !i18nNode,
-      });
+      createPageFromNode(
+        i18nNode || node,
+        {
+          prefix: i18nNode ? '' : locale,
+          createPage,
+          disableSwiftype: !i18nNode,
+        },
+        true // always defer localized pages
+      );
     });
   });
 
@@ -387,7 +394,8 @@ const createLocalizedRedirect = ({
 
 const createPageFromNode = (
   node,
-  { createPage, prefix = '', disableSwiftype = false }
+  { createPage, prefix = '', disableSwiftype = false },
+  defer = false
 ) => {
   const {
     fields: { fileRelativePath, slug },
@@ -416,6 +424,7 @@ const createPageFromNode = (
         slugRegex: `${slug}/.+/`,
         disableSwiftype,
       },
+      defer,
     });
   }
 };

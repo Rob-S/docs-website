@@ -8,9 +8,9 @@ metaDescription: 'How to view, query, and visualize the data you report to New R
 translationType: machine
 ---
 
-import imgIntegrationK8S402X from './images/img-integration-k8.png'
+import imgIntegrationK8S402X from 'images/img-integration-k8.png'
 
-import dockerLogoCrop from './images/docker-logo-crop.png'
+import dockerLogoCrop from 'images/docker-logo-crop.png'
 
 Prometheus OpenMetricsやNew Relicとのリモートライト統合で収集したメトリクスをクエリして可視化するには、 [NRQL](/docs/query-data/nrql-new-relic-query-language/getting-started/nrql-syntax-components-functions) を使用することができます。また、 [PromQL スタイルのクエリを NRQL](/docs/integrations/prometheus-integrations/view-query-data/translate-promql-queries-nrql) に変換するには、Grafana または [クエリビルダ](/docs/query-your-data/explore-query-data/query-builder/use-advanced-promql-style-mode-query-data) を使用します。
 
@@ -109,7 +109,9 @@ DockerとKubernetesのすべてのメトリクスは、 `Metric` タイプに保
   </tbody>
 </table>
 
-<ImageSizing width="40px" height="35px">![img-integration-k8.png](./images/img-integration-k8.png "img-integration-k8.png") </ImageSizing>**Kubernetes:** スクレーパーがKubernetesで動作している場合、New Relicはすべてのメトリクスに以下の属性も追加します。
+<img style={{ width: '40px', height: '35px'}} class="inline" title="img-integration-k8.png" alt="img-integration-k8.png" src={imgIntegrationK8S402X}/>
+
+**Kubernetes： **スクレーパーがKubernetesで実行されている場合、NewRelicはすべてのメトリックに次の属性も追加します。
 
 <table>
   <thead>
@@ -208,16 +210,14 @@ DockerとKubernetesのすべてのメトリクスは、 `Metric` タイプに保
   <tbody>
     <tr>
       <td>
-        prometheus_server
+        `prometheus_server`
       </td>
 
       <td>
         Prometheusのリモート書き込みURLパラメータとして指定されたユーザー提供のラベル。問い合わせ時にPrometheusのソースサーバーを区別するため、提供される値は一意でなければなりません。デフォルトでは指定されていません。
       </td>
     </tr>
-  </tbody>
 
-  <tbody>
     <tr>
       <td>
         `newrelic.source`
@@ -345,7 +345,7 @@ DockerとKubernetesのすべてのメトリクスは、 `Metric` タイプに保
 
 [メトリック名と属性](#nrql-examples) を使って、データを照会することができます。ファセット、時系列、および時間選択の詳細については、 [NRQL ドキュメント](/docs/query-data/nrql-new-relic-query-language/getting-started/nrql-syntax-components-functions) を参照してください。
 
-PromQLスタイルのクエリを構築するには、 [docs](/docs/integrations/prometheus-integrations/view-query-data/supported-promql-features) を参照してください。
+PromQLスタイルのクエリを構築するには、\[サポートされているPromQLの機能]](/docs/integrations/prometheus-integrations/view-query-data/supported-promql-features)に関するドキュメントを参照してください。
 
 <CollapserGroup>
   <Collapser
@@ -381,13 +381,21 @@ PromQLスタイルのクエリを構築するには、 [docs](/docs/integrations
     id="clients-pod-namespace"
     title="OpenMetricsでポッドごとに接続されたRedisクライアントを表示"
   >
-    <ImageSizing width="40px" height="35px">![Docker アイコン](./images/docker-logo-crop.png "Docker アイコン") </ImageSizing>**Docker:** この例では、Redis エクスポーターをスクレイピングすることを想定しています。クラスター内のエンドポイントごとの接続されたRedisクライアントの数を表示するには、次のようにします。
+    <img style={{ width: '40px', height: '35px'}} class="inline" title="Docker icon" alt="Docker icon" src={dockerLogoCrop}/>
+
+    **Docker： **
+
+    この例では、Redisエクスポーターをスクレイピングしていることを前提としています。クラスター内のエンドポイントごとに接続されているRedisクライアントの数を表示するには：
 
     ```
     FROM Metric SELECT latest(redis_connected_clients) WHERE clusterName='my-cluster' FACET scrapedEndpoint TIMESERIES
     ```
 
-    <ImageSizing width="40px" height="35px">![Kubernetes アイコン](./images/img-integration-k8.png "Kubernetes アイコン") </ImageSizing>**Kubernetes:** この例では、Redis エクスポーターがインストールされた Redis ポッドがあることを想定しています。デフォルトの名前空間でポッドごとに接続されたRedisクライアントの数を表示するには、次のようにします。
+    <img style={{ width: '40px', height: '35px'}} class="inline" title="Kubernetes icon" alt="Kubernetes icon" src={imgIntegrationK8S402X}/>
+
+    **Kubernetes： **
+
+    この例では、RedisエクスポーターがインストールされたRedisポッドがあることを前提としています。デフォルトの名前空間でポッドごとに接続されているRedisクライアントの数を表示するには：
 
     ```
     FROM Metric SELECT latest(redis_connected_clients) WHERE namespaceName='default' FACET podName TIMESERIES
@@ -395,7 +403,7 @@ PromQLスタイルのクエリを構築するには、 [docs](/docs/integrations
   </Collapser>
 
   <Collapser
-    id="xx"
+    id="avg-free-memory"
     title={<><img src={dockerLogoCrop} title="Docker icon" alt="Docker icon" style={{ height: '35px', width: '40px' }}/>ドッカー。スクレイピングされたエンドポイントの平均メモリ使用量を表示</>}
   >
     この例では、Dockerのノード・エクスポーターをスクレイピングしており、OpenMetricsを使用することを想定しています。クラスタ内のすべてのスクレイピングされたエンドポイントの平均メモリ空き容量を表示するには、次のようにします。
@@ -421,7 +429,7 @@ PromQLスタイルのクエリを構築するには、 [docs](/docs/integrations
 
 データを照会すると、その結果を New Relic の UI で見ることができます。また、データをチャートやヒストグラムなどで視覚化することもできます。
 
-Prometheus インテグレーションのデータに対する NRQL クエリの結果を表示するには、次のようにします。 **[one.newrelic.com](https://one.newrelic.com) > Query your data** にアクセスしてください。詳細については、New Relic の [query builder documentation](/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder) をご覧ください。
+Prometheus インテグレーションのデータに対する NRQL クエリの結果を表示するには、次のようにします。 **[one.newrelic.com](https://one.newrelic.com) > Query your data** にアクセスしてください。詳細については、 [query builder documentation](/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder) をご覧ください。
 
 ## ヒストグラムの作成とパーセンタイルの計算 [#histograms-percentiles]
 

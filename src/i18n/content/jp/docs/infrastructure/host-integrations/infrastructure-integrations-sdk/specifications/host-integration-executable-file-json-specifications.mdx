@@ -8,6 +8,8 @@ metaDescription: JSON specifications for New Relic's on-host integrations SDK.
 translationType: machine
 ---
 
+import newRelicIntegrationsSdkDataStructure from 'images/new-relic-integrations-sdk-data-structure.png'
+
 インフラストラクチャモニタリング用の [Integrations SDK](/docs/integrations/integrations-sdk/getting-started/introduction-infrastructure-integrations-sdk) を使用して、カスタム [オンホスト統合](/docs/integrations/host-integrations/getting-started/introduction-host-integrations) を構築する場合、統合は、実行ファイルと少なくとも 1 つの設定ファイルの少なくとも 3 つのファイルで構成されます。実行ファイルは、インフラストラクチャ監視エージェントが消費し、New Relic に送信する JSON データを生成します。この JSON オブジェクトを SDK 統合プロトコルと呼びます。
 
 ## 実行ファイルの要件 [#what-is]
@@ -89,7 +91,11 @@ translationType: machine
 
 この図はその構造を表しています。
 
-![New Relic Integrations SDKのデータ構造図](./images/new-relic-integrations-sdk-data-structure.png "new-relic-integrations-sdk-data-structure.png")
+<img
+  title="new-relic-integrations-sdk-data-structure.png"
+  alt="New Relic Integrations SDK data structure diagram"
+  src={newRelicIntegrationsSdkDataStructure}
+/>
 
 以下は、JSON出力の例です（読みやすさのために改行を入れて整形しています）。定義と仕様はこの例に従います。
 
@@ -459,7 +465,7 @@ translationType: machine
 * [インベントリ](#inventory)
 
 <Callout variant="important">
-  New Relic Dashboards の観点から見ると、インフラストラクチャのメトリクスとイベントは、どちらも [イベントデータタイプ](/docs/data-analysis/metrics/analyze-your-metrics/data-collection-metric-timeslice-event-data#overview) に分類されます。メトリクスとイベントの両方を見つけるには、メトリクス データ エクスプローラーではなく、インサイト [イベント データ エクスプローラー](/docs/insights/explore-data/data-explorer/event-explorer-query-chart-your-event-data) を使用します。
+  New Relic ダッシュボードの観点からは、インフラストラクチャのメトリクスとイベントは、どちらも [イベントデータ](/docs/data-apis/understand-data/new-relic-data-types/#event-data) に分類されます。
 </Callout>
 
 <CollapserGroup>
@@ -474,7 +480,7 @@ translationType: machine
 
     * 特定のシステムへの1分間のアクティブな接続数
 
-      関連するメタデータの他に、メトリックは基本的にメトリック名と数値だけです。このデータを表示するには、New Relic Insights [Event data explorer](/docs/insights/explore-data/data-explorer/event-explorer-query-chart-your-event-data) を使用します。
+      メトリックは、関連するメタデータの他に、基本的にはメトリック名と数値だけです。このデータについての詳細は、 [イベントデータ](/docs/data-apis/understand-data/new-relic-data-types/#event-data) をご覧ください。
 
       以下は、エンティティのメトリックデータのJSONの例です。
 
@@ -584,7 +590,7 @@ translationType: machine
 
     * 新規テーブルの作成
 
-      このデータは、 [インフラストラクチャ **イベント** ページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-events-page-live-feed-every-config-change) と [インフラストラクチャ イベント ヒートマップ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/events-heatmap-examine-patterns-time-range) で見ることができます。また、Insightsで `InfrastructureEvent` イベントタイプを照会することもできます。
+      このデータは、 [Infrastructure **Events** ページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-events-page-live-feed-every-config-change) と [Infrastructure events heatmap](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/events-heatmap-examine-patterns-time-range) で見ることができます。また、New Relicでは、 `InfrastructureEvent` イベントタイプを照会することができます。
 
       ここでは、インテグレーションのイベントデータのJSONペイロードの例を示します。このペイロードは、 [ヘッダーのJSON](#exec-header) 、フィールドの定義に従います。
 
@@ -659,7 +665,7 @@ translationType: machine
 
     * その他のシステムメタデータ
 
-      このデータは、 [インフラストラクチャ **インベントリ** ページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-inventory-page-search-your-entire-infrastructure) と [インフラストラクチャ イベント ヒートマップ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/events-heatmap-examine-patterns-time-range) で見ることができます。また、インベントリの変更に関連するデータをInsightsで照会することもできます。
+      このデータは、 [**インベントリ** ページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-inventory-page-search-your-entire-infrastructure) および [インフラストラクチャイベントのヒートマップ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/events-heatmap-examine-patterns-time-range) で見ることができます。また、インベントリの変更に関連するデータを照会することもできます。
 
       `インベントリ` データタイプは、以下を含む1つまたは複数のJSONサブオブジェクトのハッシュです。
 
