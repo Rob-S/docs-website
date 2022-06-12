@@ -10,7 +10,12 @@ translationType: machine
 
 New Relic RabbitMQオンホスト[統合](/docs/integrations/host-integrations/getting-started/introduction-host-integrations)は、クラスター、vhost、キュー、エクスチェンジ、コンシューマーに関連する重要なメトリックを含む、RabbitMQサービスからのメトリックと構成データをレポートします。
 
-統合をインストールし、収集するデータを確認するために読んでください。
+<Callout
+  variant="important"
+  title="EOL通知"
+>
+  2022年4月をもって、 `RabbitMQCluster`エンティティを含むいくつかの機能のサポートを終了します。この移行に簡単に備える方法など、詳細については、 [ExplorersHubの投稿](https://discuss.newrelic.com/t/q1-bulk-eol-announcement-fy23/181744)をご覧ください。
+</Callout>
 
 ## 互換性と要件 [#comp-req]
 
@@ -139,7 +144,7 @@ RabbitMQに関連する特定の設定は、構成ファイルの`env`セクシ�
 
 **クラスター環境**
 
-クラスタ環境では、1つのノードのみが`METRICS=false`と`INVENTORY=false`を使用する必要があります。残りは`INVENTORY=true`と`METRICS=false`を使用する必要があります。
+クラスタ環境では、1つのノードのみが`METRICS=false`と`INVENTORY=false`を使用する必要があります。残りは`INVENTORY=true`と`METRICS=false`を使用する必要があります。これらの詳細については、[インスタンス設定](#instance-settings)を参照してください。
 
 Kubernetesでクラスター環境を実行している場合は、RabbitMQを[StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)としてデプロイし、RabbitMQポッドからすべてのメトリックをクエリするようにエージェントを構成する必要があります。構成[ファイル](https://github.com/newrelic/nri-rabbitmq/blob/master/rabbitmq-config.yml.k8s_sample)の自動検出一致条件を次の値に設定します。
 
